@@ -1,0 +1,596 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #070c16;
+  --panel: #0c1524;
+  --panel2: #111e31;
+  --line: rgba(136, 178, 235, 0.17);
+  --text: #eaf2ff;
+  --muted: #91a5c3;
+  --blue: #76b6ff;
+  --glow: rgba(57, 137, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.shell {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 4.2vw;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.13em;
+  font-size: 11px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+.brandmark {
+  font-size: 24px;
+  color: #83bcff;
+}
+
+.brand b {
+  color: #518ee1;
+}
+
+.status {
+  color: #89a4c7;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #61e7a5;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #61e7a5;
+}
+
+.statusDivider {
+  color: #3a4c68;
+}
+
+/* =========================
+   HERO / INTRO
+========================= */
+
+.hero {
+  min-height: 620px;
+  position: relative;
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0a1321 url('/assets/heroes-concept.png') center 43% / cover;
+  display: flex;
+  align-items: center;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 10, 18, 0.97) 0%,
+      rgba(5, 10, 18, 0.86) 34%,
+      rgba(5, 10, 18, 0.25) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 10, 18, 0.8),
+      transparent 38%
+    );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding: 68px 7%;
+  max-width: 780px;
+}
+
+.eyebrow {
+  color: #83baff;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(42px, 6.8vw, 88px);
+  line-height: 1.07;
+  letter-spacing: -0.05em;
+  margin: 24px 0 18px;
+}
+
+.hero h1 span {
+  color: #8fc5ff;
+  text-shadow: 0 0 28px rgba(74, 146, 255, 0.3);
+}
+
+.tagline {
+  font-size: 16px;
+  color: #c1d1e8;
+  letter-spacing: 0.04em;
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+
+.primary,
+.ghost {
+  padding: 15px 20px;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.primary {
+  border: 0;
+  background: #367fe0;
+  color: white;
+  box-shadow: 0 0 25px rgba(42, 121, 232, 0.24);
+  transition: 0.2s ease;
+}
+
+.primary:hover {
+  background: #4b93f1;
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(42, 121, 232, 0.4);
+}
+
+.primary span {
+  margin-left: 20px;
+}
+
+.ghost {
+  border: 1px solid rgba(160, 196, 240, 0.4);
+  background: rgba(8, 15, 27, 0.5);
+  transition: 0.2s ease;
+}
+
+.ghost:hover {
+  background: rgba(48, 94, 157, 0.2);
+  border-color: #83baff;
+}
+
+.lore {
+  margin-top: 18px;
+  padding: 15px 18px;
+  background: rgba(9, 18, 32, 0.86);
+  border-left: 2px solid #7db8ff;
+  color: #c8d8ec;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 550px;
+}
+
+.heroFoot {
+  position: absolute;
+  bottom: 22px;
+  left: 7%;
+  right: 7%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: #a4bad6;
+}
+
+/* =========================
+   MISSION STATUS
+========================= */
+
+.missionToast {
+  margin: 18px 0;
+  padding: 13px 16px;
+  border: 1px solid rgba(97, 231, 165, 0.3);
+  background: rgba(24, 65, 53, 0.2);
+  color: #8cf1bd;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.missionToast span {
+  margin-left: 12px;
+  color: #c4d6ec;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  padding: 80px 0 45px;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 27px;
+}
+
+.sectionHeading h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(25px, 3vw, 38px);
+  letter-spacing: -0.03em;
+  margin: 10px 0 0;
+}
+
+.sectionHeading p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: right;
+}
+
+/* =========================
+   HERO CHARACTER GRID
+========================= */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.heroCard {
+  min-height: 215px;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, #0e1a2b, #09111e);
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCard:hover,
+.heroCard.selected {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 0 18px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.heroSigil {
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.cardNo {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: #617a9c;
+}
+
+.cardName {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cardTitle {
+  margin-top: 5px;
+  color: var(--accent);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.cardClass {
+  margin-top: 8px;
+  color: #9aacc6;
+  font-size: 11px;
+}
+
+.heroMission {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c7d6e9;
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  color: #617a9c;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+/* =========================
+   CHAPTERS
+========================= */
+
+.chapterSection {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+}
+
+.chapterList {
+  border-top: 1px solid var(--line);
+}
+
+.chapter {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 21px 16px;
+  gap: 22px;
+  transition: 0.2s;
+}
+
+.chapter:hover,
+.chapter.active {
+  background: linear-gradient(
+    90deg,
+    rgba(50, 114, 197, 0.16),
+    transparent
+  );
+}
+
+.chapterNum {
+  font-family: 'Orbitron', sans-serif;
+  color: #6c8db7;
+  font-size: 13px;
+}
+
+.chapter.active .chapterNum {
+  color: #8cc1ff;
+}
+
+.chapterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.chapterInfo b {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.chapterInfo small {
+  color: #90a4c0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.chapterArrow {
+  font-size: 18px;
+  color: #7796ba;
+}
+
+/* =========================
+   CHAPTER DETAILS
+========================= */
+
+.chapterDetail {
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid rgba(110, 165, 232, 0.22);
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      rgba(36, 101, 184, 0.2),
+      transparent 60%
+    ),
+    #0b1422;
+}
+
+.detailLabel {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: #7db8ff;
+}
+
+.chapterDetail h3 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 13px 0;
+  font-size: 20px;
+}
+
+.chapterDetail p {
+  color: #b3c4dc;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.detailStatus {
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: #8ca6c7;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0 30px;
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
+  color: #61748e;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
+
+@media (max-width: 800px) {
+  .heroGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 560px;
+    background-position: 60% center;
+  }
+
+  .sectionHeading {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .sectionHeading p {
+    text-align: left;
+  }
+
+  .status {
+    font-size: 9px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .shell {
+    padding: 0 18px;
+  }
+}
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 520px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    font-size: 9px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .hero {
+    min-height: 580px;
+  }
+
+  .heroContent {
+    padding: 45px 24px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .heroFoot {
+    left: 24px;
+    right: 24px;
+    font-size: 8px;
+  }
+
+  .heroFoot span:last-child {
+    display: none;
+  }
+
+  .chapter {
+    gap: 13px;
+    padding: 17px 10px;
+  }
+
+  .chapterInfo b {
+    font-size: 10px;
+  }
+
+  .chapterInfo small {
+    font-size: 10px;
+  }
+
+  .chapterDetail {
+    padding: 20px;
+  }
+
+  footer {
+    gap: 12px;
+    flex-direction: column;
+  }
+}
